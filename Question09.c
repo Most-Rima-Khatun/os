@@ -1,34 +1,34 @@
 #include<stdio.h>
 
 void solve(){
+    FILE *fp;
     int n,m; //n = process, m = resources
-    printf("Enter number of process :");
-    scanf("%d",&n);
-    printf("Enter number of resources :");
-    scanf("%d",&m);
+    fp = fopen("input.txt","r");
+    //printf("Enter number of process \t resoureces:");
+     fscanf(fp,"%d %d",&n, &m);
 
     int alloc[n][m],max[n][m],avail[m],need[n][m];
     int finish[n],safeseq[n];
 
-    printf("Enter allocation matrix :");
+    //printf("Enter allocation matrix :");
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
-            scanf("%d",&alloc[i][j]);
+            fscanf(fp,"%d",&alloc[i][j]);
         }
     }
 
-    printf("Enter Max matrix :");
+    //printf("Enter Max matrix :");
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
-            scanf("%d",&max[i][j]);
+            fscanf(fp,"%d",&max[i][j]);
         }
     }
 
-    printf("Enter available Resources :");
+    //printf("Enter available Resources :");
     for(int j = 0; j < m; j++){
-        scanf("%d",&avail[j]);
+        fscanf(fp,"%d",&avail[j]);
     }
-    printf("Enter Need matrix :");
+   // printf("Enter Need matrix :");
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
             need[i][j] = max[i][j] - alloc[i][j];
